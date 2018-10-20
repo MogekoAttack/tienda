@@ -6,9 +6,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Frame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
@@ -26,7 +33,6 @@ public class Frame extends JFrame {
 			}
 		});
 	}
-
 	/**
 	 * Create the frame.
 	 */
@@ -37,9 +43,19 @@ public class Frame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
 		Panel_InicioSesion panel_InicioSesion = new Panel_InicioSesion();
 		contentPane.add(panel_InicioSesion, BorderLayout.NORTH);
+		
+		JButton btn_Sincon = new JButton("Sin contraseña");
+		btn_Sincon.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				new Sincon().setVisible(true);
+				
+			}
+		});
+		contentPane.add(btn_Sincon, BorderLayout.SOUTH);
+		
 	}
 
 }
