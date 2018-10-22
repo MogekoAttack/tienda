@@ -7,8 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Frame extends JFrame {
 
@@ -47,11 +48,13 @@ public class Frame extends JFrame {
 		contentPane.add(panel_InicioSesion, BorderLayout.NORTH);
 		
 		JButton btn_Sincon = new JButton("Sin contraseña");
-		btn_Sincon.addMouseListener(new MouseAdapter() {
+		btn_Sincon.addActionListener(new ActionListener() {
+			
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
 				new Sincon().setVisible(true);
-				
+				dispose();
 			}
 		});
 		contentPane.add(btn_Sincon, BorderLayout.SOUTH);

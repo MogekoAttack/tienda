@@ -9,6 +9,9 @@ import javax.swing.JButton;
 //Mios
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JLabel;
+import java.awt.Component;
+import javax.swing.Box;
 //Mios
 
 public class Panel_InicioSesion extends JPanel {
@@ -25,11 +28,17 @@ public class Panel_InicioSesion extends JPanel {
 	 */
 	public Panel_InicioSesion() {
 		
-		setLayout(new GridLayout(3, 3, 10, 10));
+		setLayout(new GridLayout(0, 2, 10, 10));
+		
+		JLabel lblNewLabel = new JLabel("Usuario");
+		add(lblNewLabel);
 		
 		txf_usario = new JTextField();
 		add(txf_usario);
 		txf_usario.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("Contraseña");
+		add(lblNewLabel_1);
 		
 		txf_con = new JPasswordField ();
 		add(txf_con);
@@ -65,6 +74,9 @@ public class Panel_InicioSesion extends JPanel {
 				f.dispose();
 			}
 		});
+		
+		Component horizontalStrut = Box.createHorizontalStrut(20);
+		add(horizontalStrut);
 		
 		JButton btn_exit = new JButton("Salir :)");
 		add(btn_exit);
