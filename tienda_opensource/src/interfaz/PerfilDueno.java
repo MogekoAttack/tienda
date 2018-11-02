@@ -8,17 +8,20 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTable;
 import javax.swing.JButton;
-import java.awt.Component;
-import javax.swing.Box;
-
+import javax.swing.JMenuItem;
+import javax.swing.SpringLayout;
 public class PerfilDueno extends JFrame {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTable table;
 	private JTable table_1;
 	private JTable table_2;
 
@@ -43,50 +46,100 @@ public class PerfilDueno extends JFrame {
 	 */
 	public PerfilDueno() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 800, 600);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("New menu");
-		menuBar.add(mnNewMenu);
+		JMenu mn_Agregar = new JMenu("Nuevo");
+		menuBar.add(mn_Agregar);
 		
-		JMenu mnNewMenu_1 = new JMenu("New menu");
-		menuBar.add(mnNewMenu_1);
+		JMenuItem mntm_Producto = new JMenuItem("Producto");
+		mn_Agregar.add(mntm_Producto);
 		
-		JMenu mnNewMenu_2 = new JMenu("New menu");
-		menuBar.add(mnNewMenu_2);
+		JMenu mn_Modificar = new JMenu("Modificar");
+		menuBar.add(mn_Modificar);
+		
+		JMenu mn_Bsucar = new JMenu("Buscar");
+		menuBar.add(mn_Bsucar);
+		
+		JMenu mn_Perfil = new JMenu("Perfil");
+		menuBar.add(mn_Perfil);
+		
+		JMenu mn_Acerca = new JMenu("Acerca");
+		menuBar.add(mn_Acerca);
+		
+		JMenuItem mntm_CerrarSesion = new JMenuItem("Cerrar sesion");
+		mn_Acerca.add(mntm_CerrarSesion);
+		mntm_CerrarSesion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new Frame().setVisible(true);
+				dispose();
+			}
+		});
+		
+		JMenuItem mntm_Salir = new JMenuItem("Salir");
+		mn_Acerca.add(mntm_Salir);
+		mntm_Salir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.exit(0);
+			}
+		});
+		
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(4, 3, 25, 25));
+		SpringLayout sl_contentPane = new SpringLayout();
+		contentPane.setLayout(sl_contentPane);
+		
+		JPanel panel = new JPanel();
+		sl_contentPane.putConstraint(SpringLayout.NORTH, panel, 10, SpringLayout.NORTH, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.WEST, panel, 10, SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.EAST, panel, 3, SpringLayout.EAST, contentPane);
+		contentPane.add(panel);
+		panel.setLayout(new GridLayout(1, 3, 5, 0));
+		
+		table = new JTable();
+		panel.add(table);
 		
 		table_1 = new JTable();
-		contentPane.add(table_1);
+		panel.add(table_1);
 		
 		table_2 = new JTable();
-		contentPane.add(table_2);
+		panel.add(table_2);
+		
+		JPanel panel_1 = new JPanel();
+		sl_contentPane.putConstraint(SpringLayout.SOUTH, panel, -6, SpringLayout.NORTH, panel_1);
+		sl_contentPane.putConstraint(SpringLayout.NORTH, panel_1, -92, SpringLayout.SOUTH, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.WEST, panel_1, 15, SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.SOUTH, panel_1, 0, SpringLayout.SOUTH, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.EAST, panel_1, -15, SpringLayout.EAST, contentPane);
+		contentPane.add(panel_1);
+		panel_1.setLayout(new GridLayout(0, 3, 5, 0));
+		
+		JButton btnNewButton = new JButton("New button");
+		panel_1.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("New button");
-		contentPane.add(btnNewButton_1);
+		panel_1.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("New button");
-		contentPane.add(btnNewButton_2);
+		panel_1.add(btnNewButton_2);
 		
-		JButton btnNewButton_5 = new JButton("New button");
-		contentPane.add(btnNewButton_5);
-		
-		JButton btnNewButton_6 = new JButton("New button");
-		contentPane.add(btnNewButton_6);
-		
-		Component horizontalStrut = Box.createHorizontalStrut(20);
-		contentPane.add(horizontalStrut);
-		
-		Component horizontalStrut_1 = Box.createHorizontalStrut(20);
-		contentPane.add(horizontalStrut_1);
+		JButton btnNewButton_3 = new JButton("New button");
+		panel_1.add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("New button");
-		contentPane.add(btnNewButton_4);
+		panel_1.add(btnNewButton_4);
+		
+		JButton btnNewButton_5 = new JButton("New button");
+		panel_1.add(btnNewButton_5);
 	}
-
 }

@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Component;
 import javax.swing.Box;
 //Mios
@@ -46,12 +48,7 @@ public class Panel_InicioSesion extends JPanel {
 		
 		JButton btn_inicio = new JButton("Iniciar sesión");
 		add(btn_inicio);
-		/*
-		TextPrompt placeholder = new TextPrompt("Apellido Paterno", textField);
-	    placeholder.changeAlpha(0.75f);
-	    placeholder.changeStyle(Font.ITALIC);
-	    JOptionPane.showMessageDialog(null, textField);
-	    */
+		
 		btn_inicio.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -59,7 +56,11 @@ public class Panel_InicioSesion extends JPanel {
 				usuario = txf_usario.getText();
 				pass = new String(txf_con.getPassword());
 				if(usuario.equals("1") && pass.equals("2")){
-					
+					new Sincon().setVisible(true);
+					Frame f = new Frame();
+					f.isVisible();
+				}else{
+					JOptionPane.showMessageDialog(null,"Nombre de usuario y/o contraseña incorrectos","¡Advertencia!",JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
